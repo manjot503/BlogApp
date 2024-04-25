@@ -1,0 +1,98 @@
+.button{
+    width: 22.5rem;
+    height: 40px;
+    background: rgb(177, 172, 172) ;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px black;
+    font-size: 16px;
+     margin-top: 20px;
+     margin-bottom: 10px;
+ 
+}
+#center{
+    background-size: cover;
+    background-position: center;
+    /* height: 408px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.input {
+    background-color: transparent;
+    width: 22.5rem;
+    height: 90%;
+    /* border: none; */
+    /* outline: none; */
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 15px;
+    /* color: rgb(233, 231, 231); */
+    padding: 20px 15px 10px 10px;
+    margin-top: -1.5rem;
+    margin-bottom: 7px;
+}
+.ds{
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+.form {
+    /* background-color:azure; */
+    border: 2px solid black;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, );
+    /* position: relative; */
+    overflow: hidden;
+    width: 400px;
+    padding: 19px 20px;
+    /* max-width: 100%;
+    min-height: 55%; */
+    /* text-align: center; */
+    /* padding-bottom: 20px; */
+    /* color: rgb(233, 231, 231); */
+    /* display: flex; */
+    /* justify-content: center;/ */
+    /* align-items: center; */
+    
+}
+
+
+.home{
+    border: 2px solid black;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, );
+    /* position: relative; */
+    overflow: hidden;
+    width: 40rem;
+    padding: 19px 20px;
+}
+
+.name{
+    font-size: 1.5rem;
+    margin-top: -8px;
+}
+#input{
+    width: 22.5rem;
+   height: 2rem;
+   background-color: transparent;
+
+    border-radius: 5px;
+   
+    
+  
+}
+#image{
+    margin-top: 10px;
+    border: 2px solid black;
+}
+#po{
+    margin-top: 25px;
+    width: 800px;
+}
