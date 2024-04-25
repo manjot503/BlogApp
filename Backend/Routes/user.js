@@ -45,6 +45,7 @@ userRouter.post("/signup", async (req,res)=>{
         })
         const token = jwt.sign(response._id.toHexString(),process.env.SECRET);
         return res.json({
+            name:response.firstname,
             token:token
         })
     }catch(error){
@@ -95,6 +96,7 @@ userRouter.post("/login",async(req,res)=>{
 
         const token = jwt.sign(emailCheck._id.toHexString(),process.env.SECRET)
         return res.json({
+            name:emailCheck.firstname,
             token:token
         })
     }

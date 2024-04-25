@@ -61,6 +61,9 @@ const Signup = () => {
             try {
                 const response = await axios.post("/user/signup", formData);
                 console.log(response.data);
+                localStorage.setItem("token",response.data.token)
+      localStorage.setItem('name',response.date.name)
+
                 // Clear form data after successful submission if needed
                 setFormData({
                     firstname:'',
@@ -70,6 +73,7 @@ const Signup = () => {
                     password: '',
                     confirmPassword: ''
                 });
+                
                 navigate("/login");
             } catch (error) {
                 console.error("Error:", error);

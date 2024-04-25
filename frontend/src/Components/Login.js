@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useState } from 'react';
 import { Link,useNavigate } from "react-router-dom";
 
@@ -57,7 +53,9 @@ const Login = () => {
                     password: '',
                     
                 });     
-                
+                localStorage.setItem("token",response.data.token)
+      localStorage.setItem('name',response.date.name)
+
                 navigate("/");
                
             } catch (error) {

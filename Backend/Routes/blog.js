@@ -5,6 +5,7 @@ const zod = require("zod");
 const { Blog } = require("../db")
 const multer = require("multer");
 const { ref, getDownloadURL, uploadBytesResumable } = require("firebase/storage");
+const Auth = require("../middleware/auth");
 
 require("dotenv").config();
 const blogRouter = express.Router();
@@ -15,7 +16,8 @@ const zodvalidation = zod.object({
 
 })
 const upload = multer({ storage: multer.memoryStorage() })
-blogRouter.post('/create', upload.single('filename'), async (req, resp) => {
+const multiple =[Auth, upload.single('filename')]
+blogRouter.post('/create', multiple, async (req, resp) => {
     const body = req.body
     console.log(body)
     if(!req.file){
@@ -36,12 +38,14 @@ blogRouter.post('/create', upload.single('filename'), async (req, resp) => {
         const blog = await Blog.create({
             title: body.title,
             description: body.description,
-            img: DownloadURL
+            img: DownloadURL,
+            date:Date.now(),
+            userId:req.userId
         })
         return resp.json({ msg: "upload successfully" })
     } catch (error) {
         console.log(error);
-        resp.status(403).json({masg:'uploading error'})
+        resp.status(403).json({msg:'uploading error'})
     }
 })
 

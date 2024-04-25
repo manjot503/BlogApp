@@ -6,7 +6,9 @@ import Blog from "./blog";
 axios.defaults.baseURL = "http://localhost:5500/";
 
 export default function Home(){
+    
     const[blog,setBlog]= useState([]);
+
     useEffect(()=>{
         async function ServerCall(){
             const response = await axios.get("blog/allblogs")
@@ -17,12 +19,15 @@ export default function Home(){
     return(
         <div>
             <BasicExample />
-            <div id="center" className="m-5">
-        <div   >
+            <div >
+        <div id="center" className="m-3"  >
             {
             blog.map((item,index) => (
                 <div key={index} >
-                <Blog title={item.title} description={item.description} image={item.img} />
+                <Blog title={item.title} 
+                description={item.description} 
+                image={item.img} 
+                date={item.date} />
                 </div>
             ))
         }
