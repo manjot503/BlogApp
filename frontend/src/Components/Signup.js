@@ -60,9 +60,9 @@ const Signup = () => {
         if (Object.keys(errors).length === 0) {
             try {
                 const response = await axios.post("/user/signup", formData);
-                console.log(response.data);
+                console.log(response.data.token);
                 localStorage.setItem("token",response.data.token)
-      localStorage.setItem('name',response.date.name)
+                localStorage.setItem('name',response.data.name)
 
                 // Clear form data after successful submission if needed
                 setFormData({
@@ -77,7 +77,7 @@ const Signup = () => {
                 navigate("/login");
             } catch (error) {
                 console.error("Error:", error);
-                
+                alert("email id already exist")         
             }
 
         }

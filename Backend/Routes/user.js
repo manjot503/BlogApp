@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt= require("bcryptjs")
 
 const {user} = require("../db");
+const sendEmail  = require("../nodemailer");
 const app = express();
 app.use(cors())
 app.use(express.json())
@@ -103,6 +104,30 @@ userRouter.post("/login",async(req,res)=>{
     catch(err){
         console.log(err) 
          res.status(500).json({ msg: "Error while logging in", error: err.message });
+    }
+})
+
+
+//otp
+
+userRouter.post ("/otp",async(req,res)=>{
+    const body = req.body;
+    try {
+        const check = await user.findOne({
+            email:body.email
+        })
+      if(!check){
+    return res.status(403).json({msg:"email does not exist"})
+}else{
+  sendEmail(body)
+  .then((response)=>{return res.send(response.msg)})
+  .catch((response)=>{return res.send(response.msg)})
+
+}
+ 
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ msg:'error' });
     }
 })
 

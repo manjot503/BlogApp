@@ -40,7 +40,8 @@ blogRouter.post('/create', multiple, async (req, resp) => {
             description: body.description,
             img: DownloadURL,
             date:Date.now(),
-            userId:req.userId
+            userId:req.userId,
+            
         })
         return resp.json({ msg: "upload successfully" })
     } catch (error) {
@@ -59,6 +60,8 @@ blogRouter.get("/allblogs",async(req,res)=>{
         return res.status(403).json({msg:"error while fetching blogs"})
     }
 })
+
+
 
 
 

@@ -54,7 +54,7 @@ const Login = () => {
                     
                 });     
                 localStorage.setItem("token",response.data.token)
-      localStorage.setItem('name',response.date.name)
+             localStorage.setItem('name',response.data.name)
 
                 navigate("/");
                
@@ -87,9 +87,9 @@ const Login = () => {
                     <input type="password" className="form-control" name="password" value={formData.password} onChange={handleChange} />
                     {errors.password && <span className="error">{errors.password}</span>}
                 </div>
-                <div className="m-3">
-                    Forget Password ?
-                </div>
+              
+             <Link to="/email" className="m-3">Forget Password ?</Link>
+
                 {/* <button type="submit" className='form_btn'>Sign Up</button> */}
                 <div>
              <button type="submit"  className="m-3 btn btn-dark" >Submit</button>

@@ -10,6 +10,7 @@ export default function View(){
         <center>
         <div className="m-3">
             <h1>{product.title}</h1>
+            <h4>{product.dates}</h4>
             <img id="image" src={product.image} width={200} height={200} />
             <p id="po">{product.description}</p>
         </div>

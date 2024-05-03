@@ -1,26 +1,5 @@
-// const mongoose = require("mongoose");
-
-// mongoose.connect("mongodb://localhost:27017/Blogapp")
-
-// .then(()=>{
-//     console.log("mongooose connected")
-// })
-
-
-// const userSchema = new mongoose.Schema({
-//     firstname:String,
-//     lastname:String,
-//     username: String,
-//     email:String,
-//     password:String
-// })
-
-// const user = mongoose.model("user",userSchema);
-
-// module.exports=  user;
-
-const {initializeApp} =require ("firebase/app")
-const {getStorage} =require("firebase/storage")
+const {initializeApp} = require ("firebase/app")
+const {getStorage} = require("firebase/storage")
 //connection mongoose and mongodb
 const mongoose= require('mongoose')
 require('dotenv').config();
@@ -57,7 +36,9 @@ const blogSchema = new mongoose.Schema({
     description:String,
     img:String,
     date:Date,
-    userId:String
+    userId:String,
+    
+    
 })
 const Blog = mongoose.model("blogs",blogSchema)
 
