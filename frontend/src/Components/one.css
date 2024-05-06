@@ -130,6 +130,7 @@ center{
 .inputotp{
     
     /* display: flex; */
+    text-align: center;
     justify-content: space-around;
     margin-left: 2.7rem;
     /* margin-top: 10px; */

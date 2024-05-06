@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:5500/";
@@ -10,15 +9,13 @@ axios.defaults.baseURL = "http://localhost:5500/";
 
 export default function Email(otp) {
     const [email, setEmail] = useState('')
-
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
-    
-
     const handleSubmit = async (e) => {
+        e.preventDefault()
         const otpnum = Math.floor(1000 + Math.random() * 9000);
-        console.log(otpnum)
+        // console.log(otpnum)
         e.preventDefault();
 
         let errors = {};
@@ -38,6 +35,7 @@ export default function Email(otp) {
                         email, email,
                         OTP: otpnum});
                     console.log(response.data);
+                   localStorage.setItem("email",response.data)
                     navigate("/otp",{state:{num:{otpnum}}})
                 } catch (error) {
                     console.log("Errors",error)

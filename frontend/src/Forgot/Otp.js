@@ -1,42 +1,52 @@
 
 import axios from "axios";
 import { useLocation, useNavigate } from 'react-router-dom';
-import {  useState } from "react";
+import {   useState } from "react";
 
 
 axios.defaults.baseURL = "http://localhost:5500/";
 
 export default function Otp(){
-  const [input, setinput] = useState('')
+  const [otp, setOtp] = useState(['','','',''])
   const [errors, setErrors] = useState({});
+
   const navigate = useNavigate();
    const location = useLocation();
-   const num =location.state?.num;
-   console.log(num)
+   const num = location.state?.num;
+  //  console.log(num)
+
   
 
 
 
   const handleSubmit = async (e) => {
+    e.preventDefault()
+    const string =  num?.otpnum.toString();
+    const enterotp = otp?.join("")
     e.preventDefault();
 
     let errors = {};
-    if (!input) {
-      errors.input = "input is required";
+    if (!otp) {
+      errors.otp = "otp is required";
      
     }
-  
-
     setErrors(errors);
+
+
     if(Object.keys(errors).length === 0){
       try {
-        // const response = await axios.post("user/otp"{
-        //   OTP:input
-        // })
- 
-        navigate('/reset')
+     if(enterotp===string){
+      
+      navigate('/reset')
+     }else{
+      alert("otp not verified")
+     }
+        
+        
       } catch (error) {
         console.log("Errors",error)
+        alert("user not found")
+
       }
     }
     
@@ -48,20 +58,16 @@ export default function Otp(){
       <form onSubmit={handleSubmit}   className="form bg-light">
         <h1 >Enter your otp</h1>
         <br></br>
-      <div></div>  
-      
-      <input  type="number"  className="inputotp" maxLength={1} name="input"  onChange={(e)=>{setinput(e.target.value)}} />
-             {errors.input && <span className="error">{errors.input}</span>} 
-   
-             <input type="text"  className="inputotp" maxLength={1} name="input" onChange={(e)=>{setinput(e.target.value)}} />
-             {errors.input && <span className="error">{errors.input}</span>} 
+              {
+                otp.map((_,index)=>(
+                  <LabeledInput type="text" maxLength={1} name="input" onChange={(e)=>{
+                    let newotp = [...otp]
+                    newotp[index] = e.target.value;
+                    setOtp(newotp)
+                  }} />
+                ))
+              }
 
-             <input type="text"  className="inputotp" maxLength={1} name="input"  onChange={(e)=>{setinput(e.target.value)}} />
-             {errors.input && <span className="error">{errors.input}</span>} 
-
-
-             <input type="text"  className="inputotp" maxLength={1} name="input"  onChange={(e)=>{setinput(e.target.value)}} />
-             {errors.input && <span className="error">{errors.input}</span>} 
         <button type="submit"   className="button">
           Container
         </button>
@@ -72,5 +78,15 @@ export default function Otp(){
 
 
     )
+}
+
+function LabeledInput({ type, name,maxLength, value, onChange, errors }) {
+  return (
+    <label>
+      {/* <h6 className="name">{placeholder}</h6> */}
+      <input className="inputotp"  type={type}  name={name} maxLength={maxLength} onChange={onChange}  />
+      {errors && <span className="error">{errors}</span>}
+    </label>
+  );
 }
 

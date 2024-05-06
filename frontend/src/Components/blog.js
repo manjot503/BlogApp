@@ -13,8 +13,10 @@ export default function Blog ({title,description,image,date}) {
     return(
     
             <div className="home m-3" onClick={handleClick}>
-            <p>{dates}</p>
-           <h2>{title}</h2>
+            <p>{dateTime}</p>
+            {/* <img id="imagehome" src={image} width={50} height={50} /> */}
+             <h2>{title}</h2>
+             
        
            <p>{description?.slice(0,100) + "..."}</p>
           </div>

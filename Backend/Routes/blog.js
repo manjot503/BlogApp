@@ -19,7 +19,7 @@ const upload = multer({ storage: multer.memoryStorage() })
 const multiple =[Auth, upload.single('filename')]
 blogRouter.post('/create', multiple, async (req, resp) => {
     const body = req.body
-    console.log(body)
+    // console.log(body)
     if(!req.file){
         console.log("file not uploaded")
     }

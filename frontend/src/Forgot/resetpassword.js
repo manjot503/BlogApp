@@ -41,7 +41,20 @@ export default function Resetpass(){
         setErrors(errors);
 
        if(Object.keys(errors).length===0){
-        navigate("/login")
+        try {
+            const email = localStorage.getItem("email")
+            // const password = localStorage.getItem("password")
+            const response = await axios.put("user/update",{
+                email:email,
+               password:formData.password
+            })
+            localStorage.clear()
+            alert("password updated successfully")
+            navigate("/login")
+        } catch (error) {
+            console.log("Errors",error)
+        alert("error while updateing")
+        }
        }
     }
     return(

@@ -116,18 +116,37 @@ userRouter.post ("/otp",async(req,res)=>{
         const check = await user.findOne({
             email:body.email
         })
+        
       if(!check){
     return res.status(403).json({msg:"email does not exist"})
 }else{
   sendEmail(body)
-  .then((response)=>{return res.send(response.msg)})
+  .then((response)=>{return res.send(check.email)})
   .catch((response)=>{return res.send(response.msg)})
 
 }
  
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         return res.status(500).json({ msg:'error' });
+    }
+})
+
+//update password
+
+userRouter.put('/update',async(req,res)=>{
+    const body = req.body
+    const salt = await bcrypt.genSalt(10);
+    let securePass = await bcrypt.hash(req.body.password,salt)
+    
+    try {
+    
+    const response = await user.updateOne({email:body.email},{password:securePass})
+    return res.json({msg:"password updated"})
+    } 
+    catch (error) {
+        return res.status(500).json({ msg:'error' });
+        
     }
 })
 
