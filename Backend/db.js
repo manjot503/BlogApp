@@ -37,6 +37,7 @@ const blogSchema = new mongoose.Schema({
     img:String,
     date:Date,
     userId:String,
+    authorName:String
     
     
 })

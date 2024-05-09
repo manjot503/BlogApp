@@ -1,6 +1,7 @@
 const { storage } = require("../db");
 const express = require("express");
 const zod = require("zod");
+const {user} = require("../db");
 
 const { Blog } = require("../db")
 const multer = require("multer");
@@ -17,6 +18,8 @@ const zodvalidation = zod.object({
 })
 const upload = multer({ storage: multer.memoryStorage() })
 const multiple =[Auth, upload.single('filename')]
+
+
 blogRouter.post('/create', multiple, async (req, resp) => {
     const body = req.body
     // console.log(body)
@@ -35,12 +38,16 @@ blogRouter.post('/create', multiple, async (req, resp) => {
         }
         const snapshot = await uploadBytesResumable(storageRef, req.file.buffer, metadata)
         const DownloadURL = await getDownloadURL(snapshot.ref)
+
+        const author = await user.findById(req.userId)
+
         const blog = await Blog.create({
             title: body.title,
             description: body.description,
             img: DownloadURL,
             date:Date.now(),
             userId:req.userId,
+            authorName:author.firstname
             
         })
         return resp.json({ msg: "upload successfully" })
@@ -58,6 +65,24 @@ blogRouter.get("/allblogs",async(req,res)=>{
         return res.json({blog:response})
     } catch (error) {
         return res.status(403).json({msg:"error while fetching blogs"})
+    }
+})
+
+
+blogRouter.delete('/delete',Auth,async(req,res)=>{
+    const body = req.body;
+    try {
+        const check = await Blog.findById(req.id);
+        if(check){
+            res.status(403).json({msg:"delete error"})
+        }
+        const response = await Blog.deleteOne({
+            _id:body.id
+        })
+         res.json({msg:"user deleted"})
+    } catch (error) {
+        console.log(error)
+         res.status(403).json({ msg:'user error' });
     }
 })
 

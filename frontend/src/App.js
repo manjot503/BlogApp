@@ -8,11 +8,7 @@ import View from './Components/Viewblog';
 import Email from './Forgot/Email';
 import OTP from './Forgot/Otp';
 import Resetpass from './Forgot/resetpassword'
-
-
-
-
-
+import HomeUser from './Components/Homeuser';
 
 
 
@@ -21,7 +17,7 @@ export default function App(){
       
         <BrowserRouter>
        
-        <Routes>
+    <Routes>
     
         
        <Route path='/' element={<Home />}></Route>
@@ -32,18 +28,11 @@ export default function App(){
        <Route path='/email' element={<Email />}></Route>
        <Route path='/otp' element={<OTP />}></Route>
        <Route path='/reset' element={<Resetpass />}></Route>
-
-      
-
-
-
-
-
+       <Route path='/homedata' element={<HomeUser />}></Route>
 
 
       
-
-        </Routes>
+    </Routes>
         
         </BrowserRouter>
     

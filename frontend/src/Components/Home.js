@@ -15,6 +15,7 @@ export default function Home(){
         setBlog(response.data.blog)
         }
         ServerCall();
+        console.log(blog)
     },[])
     return(
         <div>
@@ -24,7 +25,9 @@ export default function Home(){
             {
             blog.map((item,index) => (
                 <div key={index} >
-                <Blog title={item.title} 
+                <Blog
+                author={item.authorName}
+                title={item.title} 
                 description={item.description} 
                 image={item.img} 
                 date={item.date} />

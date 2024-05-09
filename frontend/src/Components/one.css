@@ -123,6 +123,7 @@ center{
     align-items: center;
     color: black;
     border-color: blue;
+    text-decoration: none;
     
 
 }
@@ -150,4 +151,39 @@ border-radius: 8px;
 margin-top: -1.5rem;
 margin-bottom: 7px;
     
+}
+
+.author{
+    color: black;
+    background-color: aqua;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    border-color: blue;
+    
+}
+
+#table{
+    border: 1px solid black;
+    
+}
+
+.homeuser{
+    color: black;
+    background-color: aqua;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    border-color:black;
+}
+
+.name{
+   display: flex;
+
 }

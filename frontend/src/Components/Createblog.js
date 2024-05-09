@@ -114,7 +114,7 @@ const [spinner,setSpinner] = useState()
           {
             spinner?(
             <button type="submit" className="button"  disabled>
-            Loading
+            Loading...
           </button>
            ):( <button type="submit" className="button">
             Post

@@ -39,7 +39,7 @@ function  BasicExample() {
         
                {
               login? (
-             <li className='user'>{username}</li>
+                <li  >  <Link className='user' to="homedata">{username}</Link>  </li>
               ):<PiUserCircleFill />
             }
              <Nav><Link className="btn bg-white text-success mx-1 m-1 center d-flex justify-content-center align-items-center"  to="/blog">Create Blog</Link></Nav>

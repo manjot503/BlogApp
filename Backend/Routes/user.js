@@ -5,7 +5,10 @@ const jwt = require("jsonwebtoken");
 const bcrypt= require("bcryptjs")
 
 const {user} = require("../db");
+const {Blog} =require("../db")
 const sendEmail  = require("../nodemailer");
+const Auth = require("../middleware/auth");
+
 const app = express();
 app.use(cors())
 app.use(express.json())
@@ -149,5 +152,30 @@ userRouter.put('/update',async(req,res)=>{
         
     }
 })
+
+
+//api for user show
+
+userRouter.get('/userdata',Auth,async(req,res)=>{
+    try {
+        const response = await user.findById(req.userId)
+        const blogs = await Blog.find({
+            userId:req.userId
+        })
+        return res.json({
+            username:response.username,
+            email:response.email,
+            blogs
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ msg:' user error' });
+    }
+
+})
+
+
+
+
 
 module.exports = userRouter;
