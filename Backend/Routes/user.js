@@ -3,7 +3,6 @@ const zod = require("zod");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt= require("bcryptjs")
-
 const {user} = require("../db");
 const {Blog} =require("../db")
 const sendEmail  = require("../nodemailer");
@@ -17,9 +16,9 @@ const userRouter = express.Router()
 
 
 const signupValidator =  zod.object({
-    username :zod.string(),
-    email:zod.string().email(),
-    password:zod.string().min(6)
+    username : zod.string(),
+    email: zod.string().email(),
+    password: zod.string().min(6)
 })
 
 
@@ -93,14 +92,10 @@ userRouter.post("/login",async(req,res)=>{
         if (!passwordMatch) {
             return res.status(403).json({ msg: "Incorrect password" });
         }
-        // const response = await user.create({
-        //     email:body.email,
-        //     password:body.password
-        // })
+       
 
         const token = jwt.sign(emailCheck._id.toHexString(),process.env.SECRET)
         return res.json({
-            name:emailCheck.firstname,
             token:token
         })
     }

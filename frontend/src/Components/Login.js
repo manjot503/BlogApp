@@ -7,7 +7,6 @@ axios.defaults.baseURL = "http://localhost:5500/";
 
 const Login = () => {
     const [formData, setFormData] = useState({
-       
         email: '',
         password: '',
      
@@ -45,21 +44,14 @@ const Login = () => {
         if (Object.keys(errors).length === 0) {
             try {
                 const response = await axios.post("/user/login", formData);
-                console.log(response.data);
-                // Clear form data after successful submission if needed
-                setFormData({
-                    
-                    email: '',
-                    password: '',
-                    
-                });     
+                // console.log(response.data);  
                 localStorage.setItem("token",response.data.token)
              localStorage.setItem('name',response.data.name)
 
                 navigate("/");
                
             } catch (error) {
-                console.error("Error:", error);
+                // console.error("Error:", error);
                 alert("user not found")
             }
         

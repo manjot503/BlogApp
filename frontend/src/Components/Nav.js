@@ -10,18 +10,19 @@ import './one.css';
 function  BasicExample() {
   const navigate = useNavigate();
   const [login,setLogin] = useState(false);
-  const username = localStorage.getItem("name")?.slice(0,1)
+
+
   useEffect(()=>{
     if( localStorage.getItem("token")){
    
     setLogin(!login)
     }
   },[])
-  
+  const userName = localStorage.getItem("name")?.slice(0,1);
   
   function logout(){
     localStorage.removeItem("token")
-    localStorage.removeItem("name")
+    // localStorage.removeItem("name")
     navigate("/signup");
 
   }
@@ -39,9 +40,10 @@ function  BasicExample() {
         
                {
               login? (
-                <li  >  <Link className='user' to="homedata">{username}</Link>  </li>
-              ):<PiUserCircleFill />
+              <Nav> <Link className='user' to="homedata">{userName}</Link>  </Nav>
+              ):null
             }
+            
              <Nav><Link className="btn bg-white text-success mx-1 m-1 center d-flex justify-content-center align-items-center"  to="/blog">Create Blog</Link></Nav>
              
 

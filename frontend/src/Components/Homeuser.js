@@ -45,17 +45,16 @@ export default function HomeUser(){
         <div >
            <BasicExample />
            <div className="homeuser">
-            <h1 className="name">{localStorage.getItem("name")?.slice(0,1)}  </h1>
-           </div>
-           <div id="centerri">
-         
-            <div>
-                <h3>Username   :   {user.username}</h3>
-                <h3>Email  :   {user.email}</h3>
-                <h5>Blogs  :   {user.blogs.length}</h5>
+            {/* <h1 className="name">{localStorage.getItem("name")?.slice(0,1)}  </h1> */}
+ 
+                <h3>Username : {user.username}</h3>
+                <h3>Email : {user.email}</h3>
+                <h4>Blogs : {user.blogs.length}</h4>
+                </div>
+            <div className="blogs">
                 {user.blogs && user.blogs.length > 0 ?(
-                <table id="table" className="table">
-               <thead>
+                <table id="table" className="table" >
+               <thead className="head" >
                <tr>
                         <th>Sr.No</th>
                     <th>Image</th>
@@ -85,6 +84,6 @@ export default function HomeUser(){
                     )}
             </div>
             </div>
-        </div>
+        
     )
 } 
