@@ -5,7 +5,7 @@ require("dotenv").config()
     const header = req.headers.authorization
     try {
         const token = jwt.verify(header,process.env.SECRET)
-      console.log(token)
+      // console.log(token)
     if(!token){
     return res.status(403).json({msg:"Cannot perform operations"})
     }
