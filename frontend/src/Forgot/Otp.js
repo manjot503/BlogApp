@@ -69,7 +69,7 @@ export default function Otp(){
               }
 
         <button type="submit"   className="button">
-          Container
+          Continue
         </button>
    
       </form>

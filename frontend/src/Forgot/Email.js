@@ -16,7 +16,7 @@ export default function Email(otp) {
         e.preventDefault()
         const otpnum = Math.floor(1000 + Math.random() * 9000);
         // console.log(otpnum)
-        e.preventDefault();
+        // e.preventDefault();
 
         let errors = {};
        
@@ -63,7 +63,7 @@ export default function Email(otp) {
 
          
          <div>
-      <button type="submit"  className="button" >Container</button>
+      <button type="submit"  className="button" >Continue</button>
       
       </div>
      </form>

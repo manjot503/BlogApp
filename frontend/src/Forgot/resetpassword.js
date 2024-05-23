@@ -80,7 +80,7 @@ export default function Resetpass(){
 
          
          <div>
-      <button type="submit"  className="button" >Container</button>
+      <button type="submit"  className="button" >Done</button>
       
       </div>
      </form>

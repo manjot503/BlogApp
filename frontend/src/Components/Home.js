@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import BasicExample from "./Nav"
-import axios from "axios"
+import axios from "axios";
 import Blog from "./blog";
 
 axios.defaults.baseURL = "http://localhost:5500/";
@@ -11,7 +11,7 @@ export default function Home(){
 
     useEffect(()=>{
         async function ServerCall(){
-            const response = await axios.get("blog/allblogs")
+     const response = await axios.get("blog/allblogs")
         setBlog(response.data.blog)
         }
         ServerCall();
